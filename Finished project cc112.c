@@ -3,27 +3,27 @@
 #include <string.h>
 #include <time.h>
 
-#define USERS 100
-#define TRANSACTIONSLIMIT 100
-#define USERNAMELENGTH 50
-#define PASSWORDLENGTH 50
-#define ACCNO 20
+#define USERS 100 // max user
+#define TRANSACTIONSLIMIT 100 // max transaction limit
+#define USERNAMELENGTH 50 // max username length
+#define PASSWORDLENGTH 50 // max password length
+#define ACCNO 20 // max account
 #define TRANSACTIOND 100 // transaction description 
-#define BALANCELIMIT 1000000
-#define INTERESTRATE 0.05
-#define PINLENGTH 6  // Define a standard length for the ATM PIN
+#define BALANCELIMIT 1000000 // 
+#define INTERESTRATE 0.05 // ong random rate 
+#define PINLENGTH 6  // standard length for the ATM PIN
 #define MAXATTEMPTS 3  // Max failed attempts for PIN entry
 
 // Structure to store user information
 typedef struct {
-    char username[USERNAMELENGTH];
-    char password[PASSWORDLENGTH];
-    char accountnumber[ACCNO]; // for user ID bank id eya
-    float balance;
-    int transactioncount;
-    char transaction_history[TRANSACTIONSLIMIT][TRANSACTIOND];
+    char MathewAlarcon[USERNAMELENGTH]; // for user username
+    char LorrelynPaga[PASSWORDLENGTH]; // for user password
+    char LeighCleofas[ACCNO]; // for user ID bank id eya
+    float KrishnaSeno; // foor user account balance 
+    int transactioncount; // Transaction count
+    char LorrainePEPITO[TRANSACTIONSLIMIT][TRANSACTIOND]; //transaction History
     char atmpin[PINLENGTH];  // Store the ATM PIN!!!!!
-    int failedattempts;  // Track failed ATM PIN attempts
+    int failedattempts;  // for tracking of failed ATM PIN attempts
 } User;
 
 // Global array to store users
@@ -39,14 +39,14 @@ void viewbalance(User* user);
 void calinterest(User* user); // interest calculator ye
 void VIEWtransactionhistory(User* user);
 void generatereceipt(User* user, const char* transDESCRIPTION, float amount);
-void ATMtry(User* user); // a atm inside a bank?? innovation lets go!
+void ATMtry(User* user); // an atm inside a bank?? innovation lets go!
 int authenticateatm(User* user);  // Function to authenticate user for ATM
 void RESETattemptFailed(User* user); // Reset the failed attempts after successful login
 
 // Utility functions
 void clearbuffer(); //removes leftover data input/output for unexpected shit happen
-void PRINTmenu();
-void printATMmenu();
+void PRINTmenu(); // FOR MENU OPTION
+void printATMmenu(); // AS THE VARIABLE NAME SUGGEST YEA
 void LOGactivity(const char* message);  // Log system activity to a file
 void welcumMESSAGE();  // printed welcome message 
 
@@ -80,13 +80,14 @@ int main() {
                 }
                 break;
             case 3:
-                printf("Thank you for using the banking system.\n");
+                printf("ERM what a sigma.\n");
                 LOGactivity("System Exit"); // Log system exit 
                 exit(0);
             default:
-                printf("Invalid choice. Please try again.\n");
+                printf("OOPS! wrong choice. Please try again.\n");
         }
-
+        // 
+        
         if (loggedin) {
             while (loggedin) {
                 PRINTmenu();
@@ -162,46 +163,46 @@ void registeruser() {
     }
 
     User NEWuser;
-    printf("Enter username: ");
-    fgets(NEWuser.username, USERNAMELENGTH, stdin);
-    NEWuser.username[strcspn(NEWuser.username, "\n")] = 0; // Remove newline character
+    printf("Enter Username: ");
+    fgets(NEWuser.MathewAlarcon, USERNAMELENGTH, stdin);
+    NEWuser.MathewAlarcon[strcspn(NEWuser.MathewAlarcon, "\n")] = 0; // Remove newline character
 
     printf("Enter password: ");
-    fgets(NEWuser.password, PASSWORDLENGTH, stdin);
-    NEWuser.password[strcspn(NEWuser.password, "\n")] = 0; // Remove newline character
+    fgets(NEWuser.LorrelynPaga, PASSWORDLENGTH, stdin);
+    NEWuser.LorrelynPaga[strcspn(NEWuser.LorrelynPaga, "\n")] = 0; // Remove newline character
 
     // Set up ATM PIN
     printf("Set your ATM PIN (6 digits): ");
     fgets(NEWuser.atmpin, PINLENGTH, stdin);
     NEWuser.atmpin[strcspn(NEWuser.atmpin, "\n")] = 0; // Remove newline character
 
-    snprintf(NEWuser.accountnumber, ACCNO, "ACC%04d", usercount + 1);
-    NEWuser.balance = 0.0f;
+    snprintf(NEWuser.LeighCleofas, ACCNO, "ACC%04d", usercount + 1);
+    NEWuser.KrishnaSeno = 0.0f;
     NEWuser.transactioncount = 0;
     NEWuser.failedattempts = 0; // Initialize failed attempts
 
     users[usercount] = NEWuser;
     usercount++;
-    printf("User registered successfully. Your account number is %s.\n", NEWuser.accountnumber);
+    printf("User registered successfully. Your account number is %s.\n", NEWuser.LeighCleofas);
     LOGactivity("New user registered.");
 }
 
 // Function to log in a user
 int loginuser() {
-    char username[USERNAMELENGTH];
-    char password[PASSWORDLENGTH];
+    char MathewAlarcon[USERNAMELENGTH];
+    char LorrelynPaga[PASSWORDLENGTH];
     
     printf("Enter username: ");
-    fgets(username, USERNAMELENGTH, stdin);
-    username[strcspn(username, "\n")] = 0; // Remove newline character
+    fgets(MathewAlarcon, USERNAMELENGTH, stdin);
+    MathewAlarcon[strcspn(MathewAlarcon, "\n")] = 0; // Remove newline character
 
     printf("Enter password: ");
-    fgets(password, PASSWORDLENGTH, stdin);
-    password[strcspn(password, "\n")] = 0; // Remove newline character
+    fgets(LorrelynPaga, PASSWORDLENGTH, stdin);
+    LorrelynPaga[strcspn(LorrelynPaga, "\n")] = 0; // Remove newline character
 
     for (int i = 0; i < usercount; i++) {
-        if (strcmp(users[i].username, username) == 0 && strcmp(users[i].password, password) == 0) {
-            printf("Login successful! Welcome, %s.\n", users[i].username);
+        if (strcmp(users[i].MathewAlarcon, MathewAlarcon) == 0 && strcmp(users[i].LorrelynPaga, LorrelynPaga) == 0) {
+            printf("Login successful! Welcome, %s.\n", users[i].MathewAlarcon);
             LOGactivity("User logged in.");
             return i;
         }
@@ -223,16 +224,16 @@ void deposit(User* user) {
         return;
     }
 
-    if (user->balance + amount > BALANCELIMIT) {
+    if (user->KrishnaSeno + amount > BALANCELIMIT) {
         printf("Deposit exceeds maximum balance limit of %.2f. Cannot deposit.\n", BALANCELIMIT);
         return;
     }
 
-    user->balance += amount;
-    snprintf(user->transaction_history[user->transactioncount], TRANSACTIOND, "Deposited: %.2f", amount);
+    user->KrishnaSeno += amount;
+    snprintf(user->LorrainePEPITO[user->transactioncount], TRANSACTIOND, "Deposited: %.2f", amount);
     user->transactioncount++;
 
-    printf("Deposited %.2f successfully. New balance: %.2f.\n", amount, user->balance);
+    printf("Deposited %.2f successfully. New balance: %.2f.\n", amount, user->KrishnaSeno);
     LOGactivity("Deposit made.");
 }
 
@@ -248,35 +249,35 @@ void withdraw(User* user) {
         return;
     }
 
-    if (amount > user->balance) {
-        printf("Insufficient balance. Your current balance is %.2f.\n", user->balance);
+    if (amount > user->KrishnaSeno) {
+        printf("Insufficient balance. Your current balance is %.2f.\n", user->KrishnaSeno);
         return;
     }
 
-    user->balance -= amount;
-    snprintf(user->transaction_history[user->transactioncount], TRANSACTIOND, "Withdrew: %.2f", amount);
+    user->KrishnaSeno -= amount;
+    snprintf(user->LorrainePEPITO[user->transactioncount], TRANSACTIOND, "Withdrew: %.2f", amount); // snprintf print the specified string 
     user->transactioncount++;
 
-    // GAWA resibo every withdraw cool shit galing ng overflow user
+    
     generatereceipt(user, "Withdrawal", amount);
 
-    printf("Withdrawal of %.2f successful. New balance: %.2f.\n", amount, user->balance);
+    printf("Withdrawal of %.2f successful. New balance: %.2f.\n", amount, user->KrishnaSeno);
     LOGactivity("Withdrawal made.");
 }
 
 // Function to view account balance
 void viewbalance(User* user) {
-    printf("Your current balance is: %.2f\n", user->balance);
+    printf("Your current balance is: %.2f\n", user->KrishnaSeno);
 }
 
-// Function to calculate interest
+// Function for interest calculator
 void calinterest(User* user) {
-    float interest = user->balance * INTERESTRATE;
+    float interest = user->KrishnaSeno * INTERESTRATE;
     printf("Interest calculated at %.2f%%: %.2f\n", INTERESTRATE * 100, interest);
-    user->balance += interest;
-    snprintf(user->transaction_history[user->transactioncount], TRANSACTIOND, "Interest added: %.2f", interest);
+    user->KrishnaSeno += interest;
+    snprintf(user->LorrainePEPITO[user->transactioncount], TRANSACTIOND, "Interest added: %.2f", interest);
     user->transactioncount++;
-    printf("New balance after interest: %.2f\n", user->balance);
+    printf("New balance after interest: %.2f\n", user->KrishnaSeno);
 }
 
 // Function to view transaction history
@@ -286,15 +287,14 @@ void VIEWtransactionhistory(User* user) {
     } else {
         printf("\n--- Transaction History ---\n");
         for (int i = 0; i < user->transactioncount; i++) {
-            printf("%s\n", user->transaction_history[i]);
+            printf("%s\n", user->LorrainePEPITO[i]);
         }
     }
 }
-
-// Function to generate a receipt after a withdrawal
+// GAWA resibo every withdraw cool shit credit to:  random overflow user // every withdrew generate in text file receipt
 void generatereceipt(User* user, const char* transDESCRIPTION, float amount) {
     char filename[100];
-    snprintf(filename, sizeof(filename), "%s_receipt.txt", user->accountnumber);
+    snprintf(filename, sizeof(filename), "%s_receipt.txt", user->LeighCleofas);
     
     FILE *file = fopen(filename, "a");
     if (file == NULL) {
@@ -305,14 +305,14 @@ void generatereceipt(User* user, const char* transDESCRIPTION, float amount) {
     time_t t; // TIMEEEEEEE
     time(&t);
     fprintf(file, "----- Receipt -----\n");
-    fprintf(file, "Account Number: %s\n", user->accountnumber);
+    fprintf(file, "Account Number: %s\n", user->LeighCleofas);
     fprintf(file, "Transaction: %s %.2f\n", transDESCRIPTION, amount);
     fprintf(file, "Date and Time: %s", ctime(&t));
-    fprintf(file, "New Balance: %.2f\n", user->balance);
+    fprintf(file, "New Balance: %.2f\n", user->KrishnaSeno);
     fprintf(file, "-------------------\n\n");
 
     fclose(file);
-    printf("Receipt generated for withdrawal: %s_receipt.txt\n", user->accountnumber);
+    printf("Receipt generated for withdrawal: %s_receipt.txt\n", user->LeighCleofas);
 }
 
 // Function  para sa authentication 
@@ -371,7 +371,7 @@ void ATMtry(User* user) {
         }
     }
 }
-// ERROR PUTA BUKAS AYUSIN then add function pang reset ng log in attemp TULOY YUNG sa time_t
+// ERROR PUTA BUKAS AYUSIN then add function pang reset ng log in attemp NOTE!!!!! TULOY YUNG sa ↑↑ time_t  ↓↓
 
 // Function to reset failed attempts after successful login
 void RESETattemptFailed(User* user) {
@@ -393,4 +393,6 @@ void LOGactivity(const char* message) {
 void welcumMESSAGE() {
     printf("Welcome to the Pancit canton SECURE BANK promise!\n");
     printf("Your trusted partner for all financial needs!\n\n");
+    // to sum it up all these codes is for basic BANKING system yeah!! that can handle multiple user or account and have user authentication and ATM simulation with PIN ofc
+// tho it only last until runtime afterward the account is byebye 
 }
