@@ -291,7 +291,7 @@ void VIEWtransactionhistory(User* user) {
         }
     }
 }
-// GAWA resibo every withdraw cool shit credit to:  random overflow user // every withdrew generate in text file receipt
+// GAWA resibo every withdraw cool shit credit to: that random overflow user // every withdrew generate in text file receipt
 void generatereceipt(User* user, const char* transDESCRIPTION, float amount) {
     char filename[100];
     snprintf(filename, sizeof(filename), "%s_receipt.txt", user->LeighCleofas);
@@ -373,12 +373,12 @@ void ATMtry(User* user) {
 }
 // ERROR PUTA BUKAS AYUSIN then add function pang reset ng log in attemp NOTE!!!!! TULOY YUNG sa ↑↑ time_t  ↓↓
 
-// Function to reset failed attempts after successful login
+// uh function to reset failed attempts after successful login
 void RESETattemptFailed(User* user) {
     user->failedattempts = 0; // Reset on successful logout
 }
 
-// Function to log system activity to a file
+// functiont to log system activity to a file
 void LOGactivity(const char* message) {
     FILE *logfile = fopen("system_log.txt", "a");
     if (logfile != NULL) {
